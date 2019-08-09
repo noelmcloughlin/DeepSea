@@ -165,25 +165,18 @@ deploy osds:
     - name: disks.deploy
     - failhard: True
 
-mgr tuned:
+latency tuned:
   salt.state:
-    - tgt: 'I@roles:mgr and I@cluster:ceph'
+    - tgt: '( I@roles:mgr or I@roles:mon ) and I@cluster:ceph'
     - tgt_type: compound
-    - sls: ceph.tuned.mgr
+    - sls: ceph.tuned.latency
     - failhard: True
 
-mon tuned:
+throughput tuned:
   salt.state:
-    - tgt: 'I@roles:mon and I@cluster:ceph'
+    - tgt: 'not ( I@roles:mgr or I@roles:mon ) and I@cluster:ceph'
     - tgt_type: compound
-    - sls: ceph.tuned.mon
-    - failhard: True
-
-osd tuned:
-  salt.state:
-    - tgt: 'I@roles:storage and I@cluster:ceph'
-    - tgt_type: compound
-    - sls: ceph.tuned.osd
+    - sls: ceph.tuned.throughput
     - failhard: True
 
 pools:

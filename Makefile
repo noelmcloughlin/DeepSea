@@ -771,20 +771,15 @@ copy-files:
 	install -m 644 srv/salt/ceph/terminate/storage/*.sls $(DESTDIR)/srv/salt/ceph/terminate/storage
 	# state files - tuned
 	install -d -m 755 $(DESTDIR)/srv/salt/ceph/tuned
-	install -d -m 755 $(DESTDIR)/srv/salt/ceph/tuned/osd
-	install -d -m 755 $(DESTDIR)/srv/salt/ceph/tuned/mon
-	install -d -m 755 $(DESTDIR)/srv/salt/ceph/tuned/mgr
-	install -m 644 srv/salt/ceph/tuned/osd/*.sls $(DESTDIR)/srv/salt/ceph/tuned/osd
-	install -m 644 srv/salt/ceph/tuned/mon/*.sls $(DESTDIR)/srv/salt/ceph/tuned/mon
-	install -m 644 srv/salt/ceph/tuned/mgr/*.sls $(DESTDIR)/srv/salt/ceph/tuned/mgr
+	install -d -m 755 $(DESTDIR)/srv/salt/ceph/tuned/latency
+	install -d -m 755 $(DESTDIR)/srv/salt/ceph/tuned/throughput
+	install -d -m 755 $(DESTDIR)/srv/salt/ceph/tuned/off
+	install -m 644 srv/salt/ceph/tuned/latency/*.sls $(DESTDIR)/srv/salt/ceph/tuned/latency
+	install -m 644 srv/salt/ceph/tuned/throughput/*.sls $(DESTDIR)/srv/salt/ceph/tuned/throughput
+	install -m 644 srv/salt/ceph/tuned/off/*.sls $(DESTDIR)/srv/salt/ceph/tuned/off
 	# conf files - tuned
 	install -d -m 755 $(DESTDIR)/srv/salt/ceph/tuned/files
-	install -d -m 755 $(DESTDIR)/srv/salt/ceph/tuned/files/ceph-osd
-	install -d -m 755 $(DESTDIR)/srv/salt/ceph/tuned/files/ceph-mon
-	install -d -m 755 $(DESTDIR)/srv/salt/ceph/tuned/files/ceph-mgr
-	install -m 644 srv/salt/ceph/tuned/files/ceph-osd/*.conf $(DESTDIR)/srv/salt/ceph/tuned/files/ceph-osd
-	install -m 644 srv/salt/ceph/tuned/files/ceph-mon/*.conf $(DESTDIR)/srv/salt/ceph/tuned/files/ceph-mon
-	install -m 644 srv/salt/ceph/tuned/files/ceph-mgr/*.conf $(DESTDIR)/srv/salt/ceph/tuned/files/ceph-mgr
+	install -m 644 srv/salt/ceph/tuned/files/*.conf $(DESTDIR)/srv/salt/ceph/tuned/files
 	# state files - update
 	install -d -m 755 $(DESTDIR)/srv/salt/ceph/upgrade
 	install -m 644 srv/salt/ceph/upgrade/*.sls $(DESTDIR)/srv/salt/ceph/upgrade
